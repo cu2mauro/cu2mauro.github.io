@@ -4,280 +4,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mauro Giliberti — Theoretical Physicist</title>
-  <meta name="description" content="Personal webpage of Mauro Giliberti, theoretical physicist working on holography and neutron star mergers." />
-
-  <!-- Optional: a favicon (place favicon.ico in repo root) -->
+  <meta name="description" content="Personal webpage of Mauro Giliberti, postdoctoral researcher at Goethe University Frankfurt, working on holography and binary neutron-star mergers." />
+  <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
-
-  <style>
-    :root {
-      --bg: #fafaf7;
-      --fg: #1c1c1c;
-      --muted: #5a5a5a;
-      --accent: #8a2c2c;       /* deep red — change to your taste */
-      --accent-soft: #e8d6d6;
-      --border: #e2e2dc;
-      --max-width: 820px;
-      --font-serif: "Charter", "Georgia", "Cambria", serif;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: var(--font-serif);
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.6;
-      font-size: 17px;
-    }
-
-    /* ---------- Navigation ---------- */
-    nav.topnav {
-      position: sticky;
-      top: 0;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      z-index: 100;
-    }
-    nav.topnav .inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0.8rem 1.2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    nav.topnav .name {
-      font-weight: 600;
-      font-family: var(--font-sans);
-      font-size: 0.95rem;
-      letter-spacing: 0.02em;
-    }
-    nav.topnav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.2rem;
-      margin: 0;
-      padding: 0;
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-    }
-    nav.topnav a {
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-    nav.topnav a:hover { color: var(--accent); }
-
-    /* ---------- Layout ---------- */
-    main {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 2.5rem 1.2rem 4rem;
-    }
-
-    section {
-      margin-bottom: 3.5rem;
-      scroll-margin-top: 4rem;
-    }
-
-    h1, h2, h3 {
-      font-family: var(--font-sans);
-      font-weight: 600;
-      line-height: 1.25;
-    }
-    h1 { font-size: 2rem; margin: 0 0 0.3rem; }
-    h2 {
-      font-size: 1.4rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.4rem;
-      margin-top: 0;
-    }
-    h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
-
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* ---------- Hero / About ---------- */
-    .hero {
-      display: flex;
-      gap: 2rem;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
-    .hero .text { flex: 1 1 320px; }
-    .hero .photo {
-      flex: 0 0 180px;
-      text-align: center;
-    }
-    .hero .photo img {
-      width: 180px;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid var(--accent-soft);
-    }
-    .subtitle {
-      color: var(--muted);
-      font-style: italic;
-      margin: 0 0 1rem;
-    }
-
-    /* ---------- Contact icons ---------- */
-    .icons {
-      display: flex;
-      gap: 0.9rem;
-      margin-top: 1.2rem;
-      flex-wrap: wrap;
-    }
-    .icons a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: #fff;
-      transition: all 0.15s;
-    }
-    .icons a:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-    .icons svg {
-      width: 20px;
-      height: 20px;
-      fill: var(--fg);
-    }
-    .icons a:hover svg { fill: var(--accent); }
-
-    /* ---------- CV section ---------- */
-    .cv-block p { margin: 0.5rem 0; }
-    .cv-block strong { font-family: var(--font-sans); }
-    .cv-download {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background: var(--accent);
-      color: #fff;
-      border-radius: 6px;
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-    }
-    .cv-download:hover {
-      background: #6b2222;
-      text-decoration: none;
-    }
-
-    /* ---------- Highlights ---------- */
-    .highlight {
-      margin-bottom: 2rem;
-      padding-left: 1rem;
-      border-left: 3px solid var(--accent-soft);
-    }
-    .highlight .date {
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .highlight img {
-      max-width: 100%;
-      margin-top: 0.7rem;
-      border-radius: 4px;
-    }
-
-    /* ---------- Talks list ---------- */
-    .talks-list {
-      list-style: none;
-      padding: 0;
-    }
-    .talks-list li {
-      padding: 0.6rem 0;
-      border-bottom: 1px dashed var(--border);
-    }
-    .talks-list li:last-child { border-bottom: none; }
-    .talks-list .talk-date {
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-right: 0.5rem;
-    }
-
-    /* ---------- Footer ---------- */
-    footer {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 1.5rem 1.2rem 2rem;
-      border-top: 1px solid var(--border);
-      font-family: var(--font-sans);
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    /* ---------- Responsive ---------- */
-    @media (max-width: 600px) {
-      .hero { flex-direction: column-reverse; align-items: center; text-align: center; }
-      .hero .text { text-align: left; }
-      h1 { font-size: 1.6rem; }
-      nav.topnav ul { gap: 0.8rem; }
-    }
-  </style>
 </head>
-
 <body>
 
-  <!-- =================== NAV =================== -->
   <nav class="topnav">
     <div class="inner">
-      <span class="name">Mauro Giliberti</span>
+      <span class="name"><a href="index.html">Mauro Giliberti</a></span>
       <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#cv">CV</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#talks">Talks</a></li>
+        <li><a href="index.html" class="active">About</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="outreach.html">Outreach</a></li>
       </ul>
     </div>
   </nav>
 
   <main>
-
-    <!-- =================== ABOUT =================== -->
-    <section id="about">
+    <section>
       <div class="hero">
         <div class="text">
           <h1>Mauro Giliberti</h1>
           <p class="subtitle">Postdoctoral researcher · Goethe University Frankfurt</p>
           <p>
-            I am a theoretical physicist working at the interface of holography and
-            relativistic astrophysics. I obtained my Ph.D. at the
-            <em>University of Florence</em> with the "Strings in Florence" group, with
-            a thesis on holographic methods for confinement. I am currently a postdoc
-            in the group of L. Rezzolla and C. Ecker (CRC 211, Project B09), where I
-            work on MHz gravitational waves from binary neutron star mergers, combining
-            numerical relativity / GRMHD with holographic models of dense matter.
+            I am a theoretical physicist working at the interface of holography
+            and relativistic astrophysics. I obtained my Ph.D. at the
+            <em>University of Florence</em> with the "Strings in Florence"
+            group, under the supervision of Aldo L. Cotrone, with a thesis on
+            numerical methods for holography and high-energy theoretical
+            physics. I am currently a postdoc in the CRC-TR 211 collaboration
+            at Goethe University Frankfurt, where I work on phase-transition
+            dynamics in binary neutron-star mergers and on their
+            gravitational-wave signatures.
           </p>
           <p>
-            A complete list of my publications is available on my
-            <a href="https://inspirehep.net/authors/REPLACE_ID">INSPIRE profile</a>.
+            A complete and up-to-date list of my publications is available on
+            my
+            <a href="https://inspirehep.net/authors/REPLACE_ID">INSPIRE-HEP profile</a>
+            and on the <a href="publications.html">publications page</a> of this site.
           </p>
 
-          <!-- Contact / link icons (inline SVGs — no image files needed) -->
           <div class="icons">
-            <a href="mailto:REPLACE@itp.uni-frankfurt.de" title="Email">
+            <a href="mailto:mauro.giliberti@unifi.it" title="Email">
               <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg>
             </a>
             <a href="https://inspirehep.net/authors/REPLACE_ID" title="INSPIRE-HEP">
-              <svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5zm0 7L2 14l10 5 10-5-10-5zm0 7L2 21l10 5 10-5-10-5z" transform="scale(0.9) translate(1.3 0)"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5zm0 7L2 14l10 5 10-5-10-5zm0 7L2 21l10 5 10-5-10-5z"/></svg>
             </a>
-            <a href="https://www.researchgate.net/profile/REPLACE" title="ResearchGate">
+            <a href="https://www.researchgate.net/profile/Mauro-Giliberti" title="ResearchGate">
               <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1 5h2v6h-2V7zm0 7h2v2h-2v-2z"/></svg>
             </a>
             <a href="https://orcid.org/REPLACE" title="ORCID">
@@ -290,97 +67,34 @@
         </div>
 
         <div class="photo">
-          <!-- Replace with your actual photo: images/profile.jpg -->
           <img src="images/profile.jpg" alt="Mauro Giliberti" onerror="this.style.display='none'"/>
         </div>
       </div>
     </section>
 
-    <!-- =================== CV =================== -->
-    <section id="cv" class="cv-block">
-      <h2>Curriculum Vitae</h2>
-
-      <p><strong>Contact:</strong> REPLACE AT itp.uni-frankfurt.de</p>
-
-      <p><strong>Current position:</strong> Postdoctoral researcher, Institute for
-      Theoretical Physics, Goethe University Frankfurt — CRC 211 (Project B09),
-      group of L. Rezzolla and C. Ecker.</p>
-
-      <p><strong>Education:</strong> Ph.D. in Theoretical Physics, University of
-      Florence (Strings in Florence group). Thesis: <em>"REPLACE — thesis title"</em>,
-      supervisor: REPLACE.</p>
-
-      <p><strong>Research interests:</strong> holography, confinement and phase
-      transitions in gauge theories, neutron-star merger dynamics, GRMHD simulations,
-      gravitational-wave signatures of dense matter.</p>
-
-      <p><strong>Selected fellowships / awards:</strong> REPLACE.</p>
-
-      <a class="cv-download" href="CV/Giliberti_CV.pdf">Download full CV (PDF)</a>
-    </section>
-
-    <!-- =================== RESEARCH HIGHLIGHTS =================== -->
-    <section id="research">
-      <h2>Highlights</h2>
-
+    <section>
+      <h2>News</h2>
       <div class="highlight">
-        <span class="date">Month YYYY</span>
-        <h3>Headline of a recent result, paper, or event</h3>
-        <p>
-          Short description (2–3 sentences). E.g. "We computed the first holographic
-          prediction for the MHz tail of the GW spectrum from a binary neutron star
-          merger, by coupling a top-down holographic EOS to a GRMHD simulation."
-          Optionally include a figure below.
-        </p>
-        <!-- <img src="images/highlight1.png" alt="..." /> -->
+        <span class="date">2026</span>
+        <h3>New postdoc at Goethe University Frankfurt</h3>
+        <p>I joined the CRC-TR 211 collaboration in Frankfurt as a postdoctoral researcher.</p>
       </div>
-
       <div class="highlight">
-        <span class="date">Month YYYY</span>
-        <h3>New postdoc in Frankfurt</h3>
-        <p>
-          I joined the CRC 211 group at Goethe University Frankfurt as a postdoctoral
-          researcher in Project B09.
-        </p>
+        <span class="date">Mar 2026</span>
+        <h3>Ph.D. thesis defended</h3>
+        <p>I defended my doctoral thesis <em>"Numerical Methods for High Energy Theoretical Physics and Astrophysics"</em> at the University of Florence, with the <em>Doctor Europaeus</em> certification.</p>
       </div>
-
       <div class="highlight">
-        <span class="date">Month YYYY</span>
-        <h3>Another highlight</h3>
-        <p>Description of another relevant event, talk, or publication.</p>
+        <span class="date">Sep 2025</span>
+        <h3>New paper on arXiv</h3>
+        <p><em>"Holographic Entanglement Entropy in Quiver Theories"</em>, with D. Chatzis, A. Fatemiabhari and M. Hammond. <a href="https://arxiv.org/abs/2509.19434">arXiv:2509.19434</a></p>
       </div>
     </section>
-
-    <!-- =================== TALKS =================== -->
-    <section id="talks">
-      <h2>Selected talks &amp; lectures</h2>
-      <ul class="talks-list">
-        <li>
-          <span class="talk-date">DD/MM/YYYY</span>
-          <strong>Invited talk</strong> — "Title of the talk", Conference name, Location.
-          <a href="REPLACE_URL">[slides]</a>
-        </li>
-        <li>
-          <span class="talk-date">DD/MM/YYYY</span>
-          Seminar — "Title", Institute, Location.
-          <a href="REPLACE_URL">[video]</a>
-        </li>
-        <li>
-          <span class="talk-date">DD/MM/YYYY</span>
-          Contributed talk — "Title", Conference name, Location.
-        </li>
-      </ul>
-    </section>
-
   </main>
 
   <footer>
     © <span id="year"></span> Mauro Giliberti · Built with plain HTML/CSS · Hosted on GitHub Pages
   </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

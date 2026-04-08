@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publications — Mauro Giliberti</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+</head>
+<body>
+
+  <nav class="topnav">
+    <div class="inner">
+      <span class="name"><a href="index.html">Mauro Giliberti</a></span>
+      <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html" class="active">Publications</a></li>
+        <li><a href="outreach.html">Outreach</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section>
+      <h1>Publications</h1>
+      <p class="subtitle">Automatically fetched from INSPIRE-HEP — most recent first.</p>
+      <p>
+        See the
+        <a href="https://inspirehep.net/authors/REPLACE_ID">full INSPIRE-HEP profile</a>
+        for citation metrics and additional metadata.
+      </p>
+
+      <ul class="pub-list" id="pub-list">
+        <li class="pub-loading">Loading publications from INSPIRE-HEP…</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Mauro Giliberti · Built with plain HTML/CSS · Hosted on GitHub Pages
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* =========================================================
+       INSPIRE-HEP publication fetcher
+       ---------------------------------------------------------
+       Replace AUTHOR_BAI below with your actual INSPIRE BAI.
+       To find it: go to your INSPIRE author page (e.g.
+       https://inspirehep.net/authors/XXXXXXX), open any of
+       your papers and look at the author entry — the BAI is
+       the string of the form "M.Giliberti.1".
+       ========================================================= */
+    const AUTHOR_BAI = "M.Giliberti.1";  // <-- VERIFY THIS
+    const MAX_RESULTS = 50;
+
+    async function fetchPublications() {
+      const fields = [
+        "titles", "authors", "arxiv_eprints", "publication_info",
+        "dois", "control_number", "preprint_date"
+      ].join(",");
+
+      const url = `https://inspirehep.net/api/literature`
+        + `?q=${encodeURIComponent("a " + AUTHOR_BAI)}`
+        + `&sort=mostrecent`
+        + `&size=${MAX_RESULTS}`
+        + `&fields=${fields}`;
+
+      const list = document.getElementById("pub-list");
+
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        const hits = data.hits?.hits || [];
+
+        if (hits.length === 0) {
+          list.innerHTML =
+            `<li>No publications found. Check the BAI in <code>publications.html</code> ` +
+            `or visit my <a href="https://inspirehep.net/authors/REPLACE_ID">INSPIRE profile</a>.</li>`;
+          return;
+        }
+
+        list.innerHTML = "";
+        hits.forEach(hit => {
+          const m = hit.metadata || {};
+          const title = m.titles?.[0]?.title || "Untitled";
+
+          // authors: show up to 6, then "et al."
+          const allAuthors = m.authors || [];
+          const shownAuthors = allAuthors.slice(0, 6).map(a => a.full_name).join(", ");
+          const more = allAuthors.length > 6 ? ", et al." : "";
+
+          // arxiv id
+          const arxiv = m.arxiv_eprints?.[0]?.value;
+
+          // doi
+          const doi = m.dois?.[0]?.value;
+
+          // venue
+          const pi = m.publication_info?.[0];
+          let venue = "";
+          if (pi?.journal_title) {
+            const vol  = pi.journal_volume ? ` ${pi.journal_volume}` : "";
+            const year = pi.year ? ` (${pi.year})` : "";
+            const page = pi.artid || pi.page_start || "";
+            venue = `${pi.journal_title}${vol}${year}${page ? " " + page : ""}`;
+          }
+
+          // INSPIRE id
+          const recid = m.control_number || hit.id;
+
+          const li = document.createElement("li");
+          li.innerHTML =
+            `<div class="pub-title">${escapeHtml(title)}</div>` +
+            `<div class="pub-authors">${escapeHtml(shownAuthors)}${more}</div>` +
+            (venue ? `<div class="pub-venue">${escapeHtml(venue)}</div>` : "") +
+            `<div class="pub-links">` +
+              (arxiv ? `<a href="https://arxiv.org/abs/${arxiv}">arXiv:${arxiv}</a>` : "") +
+              (doi   ? `<a href="https://doi.org/${doi}">DOI</a>` : "") +
+              (recid ? `<a href="https://inspirehep.net/literature/${recid}">INSPIRE</a>` : "") +
+            `</div>`;
+          list.appendChild(li);
+        });
+      } catch (err) {
+        console.error(err);
+        list.innerHTML =
+          `<li>Could not load publications from INSPIRE-HEP (${escapeHtml(err.message)}). ` +
+          `See my <a href="https://inspirehep.net/authors/REPLACE_ID">INSPIRE profile</a> instead.</li>`;
+      }
+    }
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    fetchPublications();
+  </script>
+
+</body>
+</html>

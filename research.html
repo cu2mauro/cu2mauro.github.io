@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research — Mauro Giliberti</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+</head>
+<body>
+
+  <nav class="topnav">
+    <div class="inner">
+      <span class="name"><a href="index.html">Mauro Giliberti</a></span>
+      <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="research.html" class="active">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="outreach.html">Outreach</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- =================== CURRENT RESEARCH =================== -->
+    <section>
+      <h1>Research</h1>
+      <p class="subtitle">Phase-transition dynamics and gravitational waves from binary neutron-star mergers</p>
+
+      <p>
+        My current research focuses on the dynamics of phase transitions in
+        dense nuclear matter and their imprint on the gravitational-wave signal
+        of binary neutron-star (BNS) mergers. I work within the CRC-TR 211
+        collaboration in Frankfurt, combining numerical relativity / GRMHD
+        simulations with holographic models of strongly-coupled dense matter.
+      </p>
+
+      <h2>Bubble dynamics in first-order transitions</h2>
+      <div class="figure-row">
+        <div class="text">
+          <p>
+            We investigate the nucleation, growth and collision of bubbles of a
+            new phase in special-relativistic hydrodynamic (SRHD) simulations,
+            including subgrid corrections to the energy–momentum tensor that
+            capture the unresolved interface dynamics. The aim is a faithful
+            three-dimensional description of the nucleation history relevant
+            for merger remnants. See, for instance,
+            <a href="https://arxiv.org/abs/2412.09588">Bea et al., arXiv:2412.09588</a>.
+          </p>
+        </div>
+        <figure class="fig">
+          <img src="images/research_bubbles.png" alt="Bubble nucleation simulation" onerror="this.style.display='none'"/>
+          <figcaption>Snapshot from a 3D nucleation simulation.</figcaption>
+        </figure>
+      </div>
+
+      <h2>MHz gravitational waves from BNS mergers</h2>
+      <div class="figure-row">
+        <div class="text">
+          <p>
+            Using GRMHD codes from the FUKA / FIL / GRACE / BHAC+ pipeline,
+            together with a subgrid model for the phase-transition dynamics, we
+            aim at the first accurate prediction of the MHz tail of the
+            gravitational-wave spectrum from a binary neutron-star merger, and
+            at assessing its observability with future ultra-high-frequency GW
+            detectors.
+          </p>
+        </div>
+        <figure class="fig">
+          <img src="images/research_mhz.png" alt="MHz GW spectrum" onerror="this.style.display='none'"/>
+          <figcaption>Schematic of the MHz spectrum.</figcaption>
+        </figure>
+      </div>
+
+      <h2>Holographic equation of state</h2>
+      <p>
+        The equation of state of dense matter is supplied by a top-down
+        holographic model, providing a model-independent handle on the
+        high-density, strongly-coupled regime that is otherwise inaccessible
+        both to perturbative QCD and to standard nuclear-physics methods.
+      </p>
+
+      <p>
+        For the full and continuously updated list of publications, see the
+        <a href="publications.html">publications page</a>.
+      </p>
+    </section>
+
+    <!-- =================== PAST RESEARCH =================== -->
+    <section class="past-research">
+      <h2>Past research — string theory and holography</h2>
+      <p>
+        During my Ph.D. and M.Sc. in Florence I worked on the gauge / gravity
+        duality, with a particular focus on confinement and the phase
+        structure of strongly-coupled gauge theories. The main directions:
+      </p>
+
+      <h3>Model-independent tools</h3>
+      <p>
+        A large part of my work used probes that can be defined in any
+        holographic background, independently of the specific top-down
+        construction:
+      </p>
+      <ul>
+        <li>
+          <strong>Wilson loops</strong> as diagnostics of confinement and
+          screening, including the holographic computation of the static
+          quark–antiquark potential — see
+          <a href="https://arxiv.org/abs/2409.04539">Giliberti, Fatemiabhari &amp; Nunez, JHEP 11 (2024) 068</a>.
+        </li>
+        <li>
+          <strong>Entanglement entropy</strong> via the Ryu–Takayanagi
+          prescription, as a complementary order parameter for confinement /
+          deconfinement transitions — see
+          <a href="https://arxiv.org/abs/2509.19434">Chatzis, Fatemiabhari, Giliberti &amp; Hammond, arXiv:2509.19434</a>.
+        </li>
+        <li>
+          <strong>Thermal holography</strong>: free energy, equation of state
+          and phase diagrams of strongly-coupled gauge theories at finite
+          temperature and density.
+        </li>
+      </ul>
+
+      <h3>Top-down constructions</h3>
+      <p>
+        I also worked on specific top-down setups built from wrapped branes
+        and quiver gauge theories, comparing their predictions with the
+        Witten–Sakai–Sugimoto (WSS) model. These constructions provide a
+        controlled embedding in string theory and allow one to track how the
+        general lessons drawn from model-independent tools survive in
+        concrete UV-complete examples.
+      </p>
+
+      <p>
+        For an excellent introduction to gauge theories and confinement, I
+        recommend
+        <a href="https://www.damtp.cam.ac.uk/user/tong/gaugetheory.html">D. Tong's
+        gauge theory lecture notes</a>.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    © <span id="year"></span> Mauro Giliberti · Built with plain HTML/CSS · Hosted on GitHub Pages
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
