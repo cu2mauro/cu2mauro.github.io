@@ -27,7 +27,7 @@
       <h1>Publications</h1>
       <p class="subtitle">Automatically fetched from INSPIRE-HEP — most recent first.</p>
       <p>
-        See the
+        See my
         <a href="https://inspirehep.net/authors/2707823">full INSPIRE-HEP profile</a>
         for citation metrics and additional metadata.
       </p>
@@ -52,7 +52,7 @@
        your author profile URL: https://inspirehep.net/authors/2707823
        ========================================================= */
     const AUTHOR_RECID = "2707823";
-    const MAX_RESULTS = 50;
+    const MAX_RESULTS = 25;
 
     async function fetchPublications() {
       const fields = [
@@ -88,7 +88,7 @@
 
           // authors: show up to 6, then "et al."
           const allAuthors = m.authors || [];
-          const shownAuthors = allAuthors.slice(0, 6).map(a => a.full_name).join(", ");
+          const shownAuthors = allAuthors.slice(0, 6).map(a => a.full_name).join("; ");
           const more = allAuthors.length > 6 ? ", et al." : "";
 
           // arxiv id
