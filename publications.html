@@ -11,13 +11,13 @@
 
   <nav class="topnav">
     <div class="inner">
-      <span class="name"><a href="index.html">Mauro Giliberti</a></span>
+      <span class="name"><a href="index.html">Dr. Mauro Giliberti — personal webpage</a></span>
       <ul>
         <li><a href="index.html">About</a></li>
         <li><a href="cv.html">CV</a></li>
         <li><a href="research.html">Research</a></li>
         <li><a href="publications.html" class="active">Publications</a></li>
-        <li><a href="outreach.html">Outreach</a></li>
+        <li><a href="outreach.html">Beyond physics</a></li>
       </ul>
     </div>
   </nav>
@@ -28,7 +28,7 @@
       <p class="subtitle">Automatically fetched from INSPIRE-HEP — most recent first.</p>
       <p>
         See the
-        <a href="https://inspirehep.net/authors/REPLACE_ID">full INSPIRE-HEP profile</a>
+        <a href="https://inspirehep.net/authors/2707823">full INSPIRE-HEP profile</a>
         for citation metrics and additional metadata.
       </p>
 
@@ -39,7 +39,7 @@
   </main>
 
   <footer>
-    © <span id="year"></span> Mauro Giliberti · Built with plain HTML/CSS · Hosted on GitHub Pages
+    © <span id="year"></span> Mauro Giliberti · Built with plain HTML/CSS, with help from <a href="https://claude.ai">Claude</a> · Hosted on GitHub Pages
   </footer>
 
   <script>
@@ -48,13 +48,10 @@
     /* =========================================================
        INSPIRE-HEP publication fetcher
        ---------------------------------------------------------
-       Replace AUTHOR_BAI below with your actual INSPIRE BAI.
-       To find it: go to your INSPIRE author page (e.g.
-       https://inspirehep.net/authors/XXXXXXX), open any of
-       your papers and look at the author entry — the BAI is
-       the string of the form "M.Giliberti.1".
+       Queries by INSPIRE author recid — found at the end of
+       your author profile URL: https://inspirehep.net/authors/2707823
        ========================================================= */
-    const AUTHOR_BAI = "M.Giliberti.1";  // <-- VERIFY THIS
+    const AUTHOR_RECID = "2707823";
     const MAX_RESULTS = 50;
 
     async function fetchPublications() {
@@ -64,7 +61,7 @@
       ].join(",");
 
       const url = `https://inspirehep.net/api/literature`
-        + `?q=${encodeURIComponent("a " + AUTHOR_BAI)}`
+        + `?q=${encodeURIComponent("authors.recid:" + AUTHOR_RECID)}`
         + `&sort=mostrecent`
         + `&size=${MAX_RESULTS}`
         + `&fields=${fields}`;
@@ -79,8 +76,8 @@
 
         if (hits.length === 0) {
           list.innerHTML =
-            `<li>No publications found. Check the BAI in <code>publications.html</code> ` +
-            `or visit my <a href="https://inspirehep.net/authors/REPLACE_ID">INSPIRE profile</a>.</li>`;
+            `<li>No publications found. Check the AUTHOR_RECID in <code>publications.html</code> ` +
+            `or visit my <a href="https://inspirehep.net/authors/2707823">INSPIRE profile</a>.</li>`;
           return;
         }
 
@@ -129,7 +126,7 @@
         console.error(err);
         list.innerHTML =
           `<li>Could not load publications from INSPIRE-HEP (${escapeHtml(err.message)}). ` +
-          `See my <a href="https://inspirehep.net/authors/REPLACE_ID">INSPIRE profile</a> instead.</li>`;
+          `See my <a href="https://inspirehep.net/authors/2707823">INSPIRE profile</a> instead.</li>`;
       }
     }
 

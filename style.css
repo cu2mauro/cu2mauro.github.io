@@ -17,7 +17,11 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll;        /* always reserve scrollbar — prevents layout shift */
+  scrollbar-gutter: stable;  /* modern browsers */
+}
 body {
   margin: 0;
   font-family: var(--font-serif);
@@ -31,14 +35,15 @@ body {
 nav.topnav {
   position: sticky;
   top: 0;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
+  background: var(--accent);
+  border-bottom: 4px solid var(--accent-soft);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   z-index: 100;
 }
 nav.topnav .inner {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0.8rem 1.2rem;
+  padding: 0.85rem 1.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,27 +56,27 @@ nav.topnav .name {
   font-size: 0.95rem;
   letter-spacing: 0.02em;
 }
-nav.topnav .name a { color: var(--fg); text-decoration: none; }
+nav.topnav .name a { color: #fff; text-decoration: none; }
 nav.topnav ul {
   list-style: none;
   display: flex;
-  gap: 1.2rem;
+  gap: 1.4rem;
   margin: 0;
   padding: 0;
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
 }
 nav.topnav a {
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.82);
   text-decoration: none;
   transition: color 0.15s;
-  padding-bottom: 2px;
+  padding-bottom: 3px;
   border-bottom: 2px solid transparent;
 }
-nav.topnav a:hover { color: var(--accent); }
+nav.topnav a:hover { color: #fff; }
 nav.topnav a.active {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
+  color: #fff;
+  border-bottom-color: #fff;
 }
 
 /* ---------- Layout ---------- */
@@ -112,10 +117,10 @@ p { margin: 0.7rem 0; }
   flex-wrap: wrap;
 }
 .hero .text { flex: 1 1 320px; }
-.hero .photo { flex: 0 0 180px; text-align: center; }
+.hero .photo { flex: 0 0 220px; text-align: center; }
 .hero .photo img {
-  width: 180px;
-  height: 180px;
+  width: 220px;
+  height: 220px;
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid var(--accent-soft);
@@ -149,9 +154,13 @@ p { margin: 0.7rem 0; }
   transform: translateY(-2px);
   text-decoration: none;
 }
-.icons svg {
+.icons svg,
+.icons img {
   width: 20px;
   height: 20px;
+  display: block;
+}
+.icons svg {
   fill: var(--fg);
 }
 .icons a:hover svg { fill: var(--accent); }
