@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MG logo">
+  <rect width="64" height="64" rx="12" ry="12" fill="#297437"/>
+  <g font-family="Helvetica, Arial, sans-serif" font-weight="700" fill="#ffffff" text-anchor="middle">
+    <text x="22" y="52" font-size="44">M</text>
+    <text x="50" y="28" font-size="22">G</text>
+  </g>
+</svg>
