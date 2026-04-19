@@ -39,7 +39,7 @@
   </main>
 
   <footer>
-    © <span id="year"></span> Mauro Giliberti · Built with plain HTML/CSS, with help from <a href="https://claude.ai">Claude</a> · Hosted on GitHub Pages
+    © <span id="year"></span> Mauro Giliberti · Built in plain HTML/CSS, with help from <a href="https://claude.ai">Claude</a> · Hosted on GitHub Pages
   </footer>
 
   <script>
@@ -88,7 +88,7 @@
 
           // authors: show up to 6, then "et al."
           const allAuthors = m.authors || [];
-          const shownAuthors = allAuthors.slice(0, 6).map(a => a.full_name).join("; ");
+          const shownAuthors = allAuthors.slice(0, 6).map(a => a.full_name).join(" ");
           const more = allAuthors.length > 6 ? ", et al." : "";
 
           // arxiv id
