@@ -353,23 +353,31 @@ p { margin: 0.7rem 0; }
 .pub-links a { margin-right: 0.8rem; }
 .pub-cites { color: var(--muted); }
 .pub-fig {
-  display: block;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 260px;
+  margin: 0 1.4rem 1.4rem;
+  padding: 0.8rem;
   background: #fff;
-  border-top: 1px solid var(--border);
-  padding: 1rem;
-  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
 }
 .pub-fig img {
+  min-width: 0;
   max-width: 100%;
-  max-height: 320px;
+  height: 100%;
+  object-fit: contain;
   filter: grayscale(1);
   transition: filter 0.4s ease;
 }
 .pub-fig.multi {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
+  grid-template-rows: 1fr 1fr;
 }
+.pub-fig.multi img { width: 100%; height: 100%; min-height: 0; }
 .pub-fig:hover img,
 .pub-fig:focus img { filter: grayscale(0); }
 @media (hover: none) { .pub-fig img { filter: none; } }
