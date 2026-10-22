@@ -6,6 +6,7 @@
   <title>Publications — Mauro Giliberti</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <script src="transitions.js"></script>
 
   <!-- Open Graph / Twitter preview card -->
   <meta property="og:type" content="article" />
@@ -26,15 +27,9 @@
       <ul>
         <li><a href="index.html">About</a></li>
         <li><a href="cv.html">CV</a></li>
-        <!-- To re-enable Research, delete the two comment lines around the li below. -->
-        <!--
         <li><a href="research.html">Research</a></li>
-        -->
         <li><a href="publications.html" class="active">Publications</a></li>
-        <!-- To re-enable Beyond physics, delete the two comment lines around the li below. -->
-        <!--
         <li><a href="outreach.html">Beyond physics</a></li>
-        -->
       </ul>
     </div>
   </nav>
@@ -42,7 +37,6 @@
   <main>
     <section>
       <h1>Publications</h1>
-      <p class="subtitle">Automatically fetched from INSPIRE-HEP.</p>
       <p>
         See my
         <a href="https://inspirehep.net/authors/2707823">full INSPIRE-HEP profile</a>
@@ -181,7 +175,7 @@
             (m.badge ? `<span class="pub-badge">${m.badge}</span>` : "") +
           `</div>` +
           `<div class="pub-body">` +
-            `<div class="pub-title">${escapeHtml(title)}</div>` +
+            `<a class="pub-title" href="https://inspirehep.net/literature/${m.recid}">${escapeHtml(title)}</a>` +
             `<div class="pub-authors">${shownAuthors}${escapeHtml(more)}</div>` +
             (venue ? `<div class="pub-venue">${venue}</div>` : "") +
             `<div class="pub-links">` +

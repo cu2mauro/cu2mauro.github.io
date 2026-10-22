@@ -6,16 +6,17 @@
   <title>Research — Mauro Giliberti</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <script src="transitions.js"></script>
 
   <!-- Open Graph / Twitter preview card -->
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Research — Mauro Giliberti" />
-  <meta property="og:description" content="Phase-transition dynamics and gravitational waves from binary neutron-star mergers, plus holography and confinement." />
+  <meta property="og:description" content="First-order phase transitions in dense QCD matter and their multi-messenger signatures, plus holography and confinement." />
   <meta property="og:url" content="https://cu2mauro.github.io/research.html" />
   <meta property="og:image" content="https://cu2mauro.github.io/images/profile.jpg" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Research — Mauro Giliberti" />
-  <meta name="twitter:description" content="Phase-transition dynamics and gravitational waves from binary neutron-star mergers, plus holography and confinement." />
+  <meta name="twitter:description" content="First-order phase transitions in dense QCD matter and their multi-messenger signatures, plus holography and confinement." />
   <meta name="twitter:image" content="https://cu2mauro.github.io/images/profile.jpg" />
 </head>
 <body>
@@ -26,15 +27,9 @@
       <ul>
         <li><a href="index.html">About</a></li>
         <li><a href="cv.html">CV</a></li>
-        <!-- To re-enable Research, delete the two comment lines around the li below. -->
-        <!--
         <li><a href="research.html" class="active">Research</a></li>
-        -->
         <li><a href="publications.html">Publications</a></li>
-        <!-- To re-enable Beyond physics, delete the two comment lines around the li below. -->
-        <!--
         <li><a href="outreach.html">Beyond physics</a></li>
-        -->
       </ul>
     </div>
   </nav>
@@ -44,59 +39,86 @@
     <!-- =================== CURRENT RESEARCH =================== -->
     <section>
       <h1>Research</h1>
-      <p class="subtitle">Phase-transition dynamics and gravitational waves from binary neutron-star mergers</p>
+      <p class="subtitle">First-order phase transitions in dense QCD matter and their multi-messenger signatures</p>
 
       <p>
-        My current research focuses on the dynamics of phase transitions in
-        dense nuclear matter and their imprint on the gravitational-wave signal
-        of binary neutron-star (BNS) mergers. I work within the CRC-TR 211
-        collaboration in Frankfurt, combining numerical relativity / GRMHD
-        simulations with holographic models of strongly-coupled dense matter.
+        I am interested in matter at the highest densities, well beyond nuclear
+        saturation, where QCD may undergo a <em>first-order phase
+        transition</em> from hadronic to quark matter. This regime cannot be
+        reproduced on Earth: it exists in neutron-star cores, and it is crossed
+        dynamically in proto-neutron stars and neutron-star mergers, which are
+        therefore the laboratories where the transition can leave observable
+        traces. Such a transition does not happen everywhere at once: it
+        proceeds through the nucleation, expansion and collision of bubbles of
+        the new phase, much like boiling water. I study how this process
+        unfolds and which signals it leaves behind: gravitational waves at MHz
+        frequencies from the bubbles themselves, kHz gravitational waves from
+        the global response of the star, and neutrinos.
+      </p>
+      <p>
+        I work in the <a href="https://relastro.uni-frankfurt.de">RelAstro group</a>
+        of Luciano Rezzolla at Goethe University Frankfurt, within the
+        <a href="https://crc-tr211.org">CRC-TR 211</a> collaboration, and I lead
+        Frankfurt-ET, the Frankfurt Research Unit of the
+        <a href="https://einsteintelescope.eu">Einstein Telescope</a> collaboration.
       </p>
 
-      <h2>Bubble dynamics in first-order transitions</h2>
+      <h2>Multi-band signals from proto-neutron stars</h2>
       <div class="figure-row">
         <div class="text">
           <p>
-            We investigate the nucleation, growth and collision of bubbles of a
-            new phase in special-relativistic hydrodynamic (SRHD) simulations,
-            including subgrid corrections to the energy–momentum tensor that
-            capture the unresolved interface dynamics. The aim is a faithful
-            three-dimensional description of the nucleation history relevant
-            for merger remnants. See, for instance,
-            <a href="https://arxiv.org/abs/2412.09588">Bea et al., arXiv:2412.09588</a>.
+            A proto-neutron star that keeps accreting matter is compressed
+            until its core crosses the phase-transition line. Following this
+            evolution with a constrained, model-agnostic ensemble of equations
+            of state, we compute two coupled signals: a MHz burst of
+            gravitational waves from colliding quark bubbles, and a kHz signal
+            from the star settling onto the hybrid branch. The two are
+            correlated, and a delayed neutrino burst would act as a timestamp
+            for the whole event. See
+            <a href="https://arxiv.org/abs/2609.29761">Ecker, Giliberti &amp; Rezzolla, arXiv:2609.29761</a>.
           </p>
         </div>
         <figure class="fig">
-          <img src="images/research_bubbles.png" alt="Bubble nucleation simulation" onerror="this.style.display='none'"/>
-          <figcaption>Snapshot from a 3D nucleation simulation.</figcaption>
+          <img src="https://arxiv.org/html/2609.29761v1/strainCurves.png" alt="MHz strain spectra" onerror="this.style.display='none'"/>
+          <figcaption>MHz strain spectra for an EOS ensemble (Ecker, Giliberti &amp; Rezzolla, Fig. 3).</figcaption>
         </figure>
       </div>
 
-      <h2>MHz gravitational waves from BNS mergers</h2>
+      <h2>Bubble dynamics from holography</h2>
       <div class="figure-row">
         <div class="text">
           <p>
-            Using GRMHD codes from the FUKA / FIL / GRACE / BHAC+ pipeline,
-            together with a subgrid model for the phase-transition dynamics, we
-            aim at the first accurate prediction of the MHz tail of the
-            gravitational-wave spectrum from a binary neutron-star merger, and
-            at assessing its observability with future ultra-high-frequency GW
-            detectors.
+            The gravitational-wave signal of a first-order transition depends
+            strongly on how fast the bubble walls move, a quantity that is hard
+            to compute from first principles at strong coupling. Using
+            holography, we performed the first microscopic simulation of bubble
+            dynamics in a theory with a QCD-like phase diagram, measuring wall
+            velocities across its metastable regions. See
+            <a href="https://arxiv.org/abs/2412.09588">Bea et al., JHEP 04 (2026) 013</a>.
           </p>
         </div>
         <figure class="fig">
-          <img src="images/research_mhz.png" alt="MHz GW spectrum" onerror="this.style.display='none'"/>
-          <figcaption>Schematic of the MHz spectrum.</figcaption>
+          <img src="https://arxiv.org/html/2412.09588v1/oc_energy_v2.png" alt="Time evolution of the energy density of a bubble" onerror="this.style.display='none'"/>
+          <figcaption>Time evolution of the energy density of a bubble (Bea et al., Fig. 12).</figcaption>
         </figure>
       </div>
 
-      <h2>Holographic equation of state</h2>
+      <h2>Nucleation in neutron-star cores</h2>
       <p>
-        The equation of state of dense matter is supplied by a top-down
-        holographic model, providing a model-independent handle on the
-        high-density, strongly-coupled regime that is otherwise inaccessible
-        both to perturbative QCD and to standard nuclear-physics methods.
+        Standard nucleation theory assumes a homogeneous, infinite medium, while
+        a neutron-star core is finite and its overpressure varies with radius.
+        I am developing a description of such inhomogeneous, overcompressed
+        transitions in finite volume, building on the
+        Kolmogorov–Johnson–Mehl–Avrami theory of phase-conversion kinetics.
+      </p>
+
+      <h2>Numerical methods</h2>
+      <p>
+        Much of my work is numerical: solving holographic and hydrodynamic
+        problems, scanning equation-of-state ensembles, and computing
+        gravitational-wave spectra, mostly in Julia and MATLAB on HPC systems.
+        Some of these tools are available as packages: see the
+        <a href="cv.html">software section of my CV</a>.
       </p>
 
       <p>
@@ -107,47 +129,47 @@
 
     <!-- =================== PAST RESEARCH =================== -->
     <section class="past-research">
-      <h2>Past research — string theory and holography</h2>
+      <h2>Past research — holography and confinement</h2>
       <p>
-        During my Ph.D. and M.Sc. in Florence I worked on the gauge / gravity
-        duality, with a particular focus on confinement and the phase
-        structure of strongly-coupled gauge theories. The main directions:
+        During my M.Sc. and Ph.D. in Florence I worked on the gauge/gravity
+        duality, with a focus on confinement, screening and the phase
+        structure of strongly-coupled gauge theories.
       </p>
 
       <h3>Model-independent tools</h3>
       <p>
-        A large part of my work used probes that can be defined in any
-        holographic background, independently of the specific top-down
-        construction:
+        Most of this work relied on probes that can be defined in any
+        holographic background:
       </p>
       <ul>
         <li>
-          <strong>Wilson loops</strong> as diagnostics of confinement and
-          screening, including the holographic computation of the static
-          quark–antiquark potential — see
+          <strong>Wilson loops</strong>, whose quark–antiquark potential
+          distinguishes conformal, confining and screened behavior — see
           <a href="https://arxiv.org/abs/2409.04539">Giliberti, Fatemiabhari &amp; Nunez, JHEP 11 (2024) 068</a>.
         </li>
         <li>
-          <strong>Entanglement entropy</strong> via the Ryu–Takayanagi
-          prescription, as a complementary order parameter for confinement /
-          deconfinement transitions — see
-          <a href="https://arxiv.org/abs/2509.19434">Chatzis, Fatemiabhari, Giliberti &amp; Hammond, arXiv:2509.19434</a>.
+          <strong>Entanglement entropy</strong> via Ryu–Takayanagi surfaces,
+          computed with numerical spline optimization, as a complementary probe
+          of (partial) deconfinement — see
+          <a href="https://arxiv.org/abs/2509.19434">Chatzis, Fatemiabhari, Giliberti &amp; Hammond, JHEP 05 (2026) 062</a>.
         </li>
         <li>
-          <strong>Thermal holography</strong>: free energy, equation of state
-          and phase diagrams of strongly-coupled gauge theories at finite
-          temperature and density.
+          <strong>Thermal holography</strong>: free energy, phase diagrams and
+          the real-time dynamics of false-vacuum decay at strong coupling,
+          the starting point of my current research on bubbles.
         </li>
       </ul>
 
       <h3>Top-down constructions</h3>
       <p>
-        I also worked on specific top-down setups built from wrapped branes
-        and quiver gauge theories, comparing their predictions with the
-        Witten–Sakai–Sugimoto (WSS) model. These constructions provide a
-        controlled embedding in string theory and allow one to track how the
-        general lessons drawn from model-independent tools survive in
-        concrete UV-complete examples.
+        These tools were applied to explicit string-theory backgrounds built
+        from wrapped branes: the holographic duals of four-dimensional
+        <em>N</em>&nbsp;=&nbsp;1 linear quiver theories, deformed by a vacuum
+        expectation value that gaps the system. In my M.Sc. thesis I
+        performed a numerical analysis of the chiral transition in the
+        Witten–Sakai–Sugimoto model, a top-down holographic model of QCD. Such constructions provide a controlled embedding in string
+        theory, in which the general lessons drawn from the model-independent
+        tools can be tested.
       </p>
 
       <p>

@@ -119,11 +119,27 @@ nav.topnav a.active {
   border-bottom-color: #fff;
 }
 
+/* ---------- Page transitions (masks animated in transitions.js) ---------- */
+@view-transition { navigation: auto; }
+::view-transition-old(root),
+::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-group(vt-edge),
+::view-transition-new(vt-edge) { animation: none; }
+.vt-edge {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  view-transition-name: vt-edge;
+}
+.vt-edge .vt-stroke { fill: none; stroke: var(--accent); stroke-width: 5; stroke-linejoin: round; }
+
 /* ---------- Layout ---------- */
 main {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 2.5rem 1.2rem 4rem;
+  padding: 2.5rem 1.2rem 2.5rem;
 }
 section {
   margin-bottom: 3rem;
@@ -157,6 +173,7 @@ p { margin: 0.7rem 0; }
   flex-wrap: wrap;
 }
 .hero .text { flex: 1 1 320px; }
+.hero .text p:not(.subtitle) { text-align: justify; hyphens: auto; }
 .hero .photo { flex: 0 0 280px; text-align: center; }
 .hero .photo img {
   width: 280px;
@@ -256,25 +273,6 @@ p { margin: 0.7rem 0; }
   letter-spacing: 0.05em;
 }
 
-/* ---------- Highlights / cards ---------- */
-.highlight {
-  margin-bottom: 2rem;
-  padding-left: 1rem;
-  border-left: 3px solid var(--accent-soft);
-}
-.highlight .date {
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.highlight img {
-  max-width: 100%;
-  margin-top: 0.7rem;
-  border-radius: 4px;
-}
-
 /* ---------- Research / outreach figure layout ---------- */
 .figure-row {
   display: flex;
@@ -355,7 +353,7 @@ p { margin: 0.7rem 0; }
   border-radius: 999px;
 }
 .pub-body { grid-column: 1; padding: 0.8rem 1.4rem 1.2rem; }
-.pub-title { font-weight: 600; font-family: var(--font-sans); font-size: 1.15rem; }
+.pub-title { display: block; color: var(--fg); font-weight: 600; font-family: var(--font-sans); font-size: 1.15rem; }
 .pub-authors { color: var(--muted); font-size: 0.92rem; margin-top: 0.3rem; }
 .pub-venue { font-size: 0.92rem; margin-top: 0.3rem; }
 .pub-links { font-family: var(--font-sans); font-size: 0.85rem; margin-top: 0.4rem; }
@@ -387,7 +385,10 @@ p { margin: 0.7rem 0; }
   grid-template-columns: 1fr 1fr;
   gap: 0.3rem;
 }
-.pub-fig:hover img,
+.pub-card { transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+.pub-card:hover { border-color: var(--accent); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); }
+.pub-title:hover { color: var(--accent); text-decoration: none; }
+.pub-card:hover .pub-fig img,
 .pub-fig:focus img { filter: grayscale(0); }
 @media (hover: none) { .pub-fig img { filter: none; } }
 @media (max-width: 640px) {
@@ -458,37 +459,45 @@ p { margin: 0.7rem 0; }
 }
 
 /* ---------- Contact + map ---------- */
+.contact { margin-bottom: 0; }
 .contact-grid {
   display: grid;
   grid-template-columns: minmax(220px, 1fr) 2fr;
   gap: 1.5rem;
-  align-items: start;
+  align-items: stretch;
 }
 .map {
   width: 100%;
-  height: 280px;
+  height: 100%;
+  min-height: 200px;
   border: 1px solid var(--border);
   border-radius: 8px;
 }
-.map-link { font-family: var(--font-sans); font-size: 0.85rem; text-align: right; }
 @media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } }
 
-/* ---------- Travel gallery ---------- */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
+/* ---------- Channel link card (outreach) ---------- */
+.standalone { margin-top: 2.5rem; }
+.channel-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  transition: border-color 0.2s;
 }
-.gallery figure { margin: 0; }
-.gallery img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 6px;
-  display: block;
-}
-.gallery figcaption {
+.channel-card:hover { border-color: var(--accent); text-decoration: none; }
+.channel-card img { width: 3rem; height: 3rem; border-radius: 50%; flex: none; }
+.channel-card .lang { font-size: 0.8rem; color: var(--muted); }
+
+/* ---------- Photo wall (outreach) ---------- */
+.photo-wall { columns: 3 220px; column-gap: 1rem; margin: 1.5rem 0; }
+.photo-wall figure { margin: 0 0 1rem; break-inside: avoid; }
+.photo-wall img { width: 100%; display: block; border-radius: 6px; }
+.photo-wall figcaption {
   font-family: var(--font-sans);
   font-size: 0.85rem;
   color: var(--muted);
@@ -512,6 +521,7 @@ footer {
   .hero { flex-direction: column-reverse; align-items: center; text-align: center; }
   .hero .text { text-align: left; }
   h1 { font-size: 1.6rem; }
-  nav.topnav ul { gap: 0.8rem; }
+  nav.topnav ul { gap: 0.4rem 0.9rem; flex-wrap: wrap; justify-content: center; font-size: 0.88rem; }
+  nav.topnav li { white-space: nowrap; }
   nav.topnav .inner { justify-content: center; }
 }
