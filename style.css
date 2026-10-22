@@ -3,6 +3,24 @@
    Edit CSS variables in :root to retheme the whole site.
    ========================================================= */
 
+/* ---------- Fonts (self-hosted, latin subset) ---------- */
+@font-face {
+  font-family: "Inter"; font-style: normal; font-weight: 100 900; font-display: swap;
+  src: url("fonts/inter-latin-wght-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Source Serif 4"; font-style: normal; font-weight: 200 900; font-display: swap;
+  src: url("fonts/source-serif-4-latin-wght-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Source Serif 4"; font-style: italic; font-weight: 200 900; font-display: swap;
+  src: url("fonts/source-serif-4-latin-wght-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Ibarra Real Nova"; font-style: normal; font-weight: 600; font-display: swap;
+  src: url("fonts/ibarra-real-nova-latin-600-normal.woff2") format("woff2");
+}
+
 :root {
   --bg: #eef4e8;            /* faint green */
   --bg-card: #f7faf3;       /* slightly lighter for cards */
@@ -11,9 +29,31 @@
   --accent: #297437;        /* deep forest green */
   --accent-soft: #cfe0c8;
   --border: #d8e2d2;
+  --nav-bg: var(--accent);
+  --on-accent: #fff;        /* text on accent-colored buttons */
+  --accent-hover: #224d2a;
   --max-width: 860px;
-  --font-serif: "Charter", "Georgia", "Cambria", serif;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-serif: "Source Serif 4", "Georgia", "Cambria", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-name: "Ibarra Real Nova", "Georgia", serif;
+  color-scheme: light dark;
+}
+
+/* ---------- Dark mode (follows the system setting) ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121a14;
+    --bg-card: #18231a;
+    --fg: #e3eadf;
+    --muted: #a3ae9f;
+    --accent: #82c98f;
+    --accent-soft: #2c4a31;
+    --border: #2a3a2c;
+    --nav-bg: #1f4d29;
+    --on-accent: #0f1d11;
+    --accent-hover: #a3dbad;
+  }
+  .map { filter: invert(0.9) hue-rotate(180deg) brightness(0.95); }
 }
 
 * { box-sizing: border-box; }
@@ -35,7 +75,7 @@ body {
 nav.topnav {
   position: sticky;
   top: 0;
-  background: var(--accent);
+  background: var(--nav-bg);
   border-bottom: 4px solid var(--accent-soft);
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   z-index: 100;
@@ -125,6 +165,13 @@ p { margin: 0.7rem 0; }
   border-radius: 50%;
   border: 3px solid var(--accent-soft);
 }
+.hero h1 {
+  font-family: var(--font-name);
+  font-size: clamp(2.6rem, 7vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.6rem;
+}
 .subtitle {
   color: var(--muted);
   font-style: italic;
@@ -147,6 +194,7 @@ p { margin: 0.7rem 0; }
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--bg-card);
+  color: var(--fg);
   transition: all 0.15s;
 }
 .icons a:hover {
@@ -161,7 +209,7 @@ p { margin: 0.7rem 0; }
   display: block;
 }
 .icons svg {
-  fill: var(--fg);
+  fill: currentColor;
 }
 .icons a:hover svg { fill: var(--accent); }
 
@@ -182,12 +230,12 @@ p { margin: 0.7rem 0; }
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   border-radius: 6px;
   font-family: var(--font-sans);
   font-size: 0.9rem;
 }
-.cv-download:hover { background: #224d2a; text-decoration: none; }
+.cv-download:hover { background: var(--accent-hover); text-decoration: none; }
 
 .cv-entry {
   margin-bottom: 1.2rem;
@@ -246,26 +294,85 @@ p { margin: 0.7rem 0; }
 }
 .figure-row .text { flex: 1 1 320px; }
 
-/* ---------- Publications list ---------- */
-.pub-box {
-  background: #ffffff;
+/* ---------- Publications cards ---------- */
+.pub-sort {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 1.5rem 0 1rem;
+}
+.pub-sort button {
+  font: inherit;
+  margin-left: 0.4rem;
+  padding: 0.25rem 0.8rem;
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0.4rem 1.5rem;
-  margin-top: 1rem;
+  border-radius: 999px;
+  background: var(--bg-card);
+  color: var(--fg);
+  cursor: pointer;
+}
+.pub-sort button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+.pub-cards { list-style: none; padding: 0; margin: 0; }
+.pub-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
-.pub-list { list-style: none; padding: 0; margin: 0; }
-.pub-list li {
-  padding: 0.9rem 0;
-  border-bottom: 1px dashed var(--border);
+.pub-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.4rem 0;
+  font-family: var(--font-sans);
 }
-.pub-list li:last-child { border-bottom: none; }
-.pub-title { font-weight: 600; font-family: var(--font-sans); }
-.pub-authors { color: var(--muted); font-size: 0.92rem; margin-top: 0.15rem; }
-.pub-venue { font-style: italic; font-size: 0.92rem; margin-top: 0.15rem; }
-.pub-links { font-family: var(--font-sans); font-size: 0.85rem; margin-top: 0.3rem; }
-.pub-links a { margin-right: 0.6rem; }
+.pub-num {
+  font-weight: 600;
+  padding: 0.15rem 0.7rem;
+  border: 1px solid var(--fg);
+  border-radius: 999px;
+}
+.pub-badge {
+  font-size: 0.85rem;
+  color: var(--accent);
+  padding: 0.15rem 0.8rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+}
+.pub-body { padding: 0.8rem 1.4rem 1.2rem; }
+.pub-title { font-weight: 600; font-family: var(--font-sans); font-size: 1.15rem; }
+.pub-authors { color: var(--muted); font-size: 0.92rem; margin-top: 0.3rem; }
+.pub-venue { font-size: 0.92rem; margin-top: 0.3rem; }
+.pub-links { font-family: var(--font-sans); font-size: 0.85rem; margin-top: 0.4rem; }
+.pub-links a { margin-right: 0.8rem; }
+.pub-cites { color: var(--muted); }
+.pub-fig {
+  display: block;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  padding: 1rem;
+  text-align: center;
+}
+.pub-fig img {
+  max-width: 100%;
+  max-height: 320px;
+  filter: grayscale(1);
+  transition: filter 0.4s ease;
+}
+.pub-fig.multi {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.pub-fig:hover img,
+.pub-fig:focus img { filter: grayscale(0); }
+@media (hover: none) { .pub-fig img { filter: none; } }
 .pub-loading { color: var(--muted); font-style: italic; }
 
 /* ---------- Past research box ---------- */
@@ -296,6 +403,74 @@ p { margin: 0.7rem 0; }
   font-size: 0.85rem;
   color: var(--muted);
   margin-right: 0.5rem;
+}
+
+/* ---------- Videos ---------- */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+.video { margin: 0; }
+.video iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.video figcaption {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+.video .lang {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  padding: 0.1rem 0.45rem;
+  margin-left: 0.3rem;
+  border-radius: 4px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* ---------- Contact + map ---------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 2fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+.map {
+  width: 100%;
+  height: 280px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.map-link { font-family: var(--font-sans); font-size: 0.85rem; text-align: right; }
+@media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Travel gallery ---------- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.gallery figure { margin: 0; }
+.gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+.gallery figcaption {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.35rem;
 }
 
 /* ---------- Footer ---------- */
