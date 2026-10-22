@@ -175,6 +175,12 @@ p { margin: 0.7rem 0; }
 .hero .text { flex: 1 1 320px; }
 .hero .text p:not(.subtitle) { text-align: justify; hyphens: auto; }
 .hero .photo { flex: 0 0 280px; text-align: center; }
+.hero .photo .icons {
+  display: grid;
+  grid-template-columns: repeat(3, 40px);
+  justify-content: center;
+  margin-top: 1.4rem;
+}
 .hero .photo img {
   width: 280px;
   height: 280px;
@@ -459,7 +465,7 @@ p { margin: 0.7rem 0; }
 }
 
 /* ---------- Contact + map ---------- */
-.contact { margin-bottom: 0; }
+main > section:last-child { margin-bottom: 0; }
 .contact-grid {
   display: grid;
   grid-template-columns: minmax(220px, 1fr) 2fr;
@@ -494,12 +500,23 @@ p { margin: 0.7rem 0; }
 .channel-card .lang { font-size: 0.8rem; color: var(--muted); }
 
 /* ---------- Photo wall (outreach) ---------- */
-.photo-wall { columns: 3 220px; column-gap: 1rem; margin: 1.5rem 0; }
-.photo-wall figure { margin: 0 0 1rem; break-inside: avoid; }
+.photo-wall { columns: 4 160px; column-gap: 0.8rem; margin: 1.5rem 0; }
+.photo-rows { margin: 1.5rem 0; }
+.photo-rows .row { display: flex; gap: 0.8rem; margin-bottom: 0.8rem; }
+.photo-rows figure { margin: 0; min-width: 0; }
+.photo-rows img { width: 100%; height: auto; display: block; border-radius: 6px; }
+.photo-rows figcaption {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+@media (max-width: 600px) { .photo-rows .row { flex-wrap: wrap; } .photo-rows figure { flex-basis: 100% !important; } }
+.photo-wall figure { margin: 0 0 0.8rem; break-inside: avoid; }
 .photo-wall img { width: 100%; display: block; border-radius: 6px; }
 .photo-wall figcaption {
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--muted);
   margin-top: 0.35rem;
 }
