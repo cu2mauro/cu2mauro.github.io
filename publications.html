@@ -84,7 +84,8 @@
        your author profile URL: https://inspirehep.net/authors/2707823
        ========================================================= */
     const AUTHOR_RECID = "2707823";
-    const MAX_RESULTS = 25;
+    const MAX_RESULTS = 250;   // records fetched (badges are computed over all of them)
+    const MAX_SHOWN = 10;      // cards displayed for the current sort
 
     /* Figure shown for each paper: INSPIRE recid -> image URL/path, or an array for a panel grid.
        Papers not listed fall back to the first figure INSPIRE extracted (if any). */
@@ -148,7 +149,7 @@
 
     function render(mode) {
       const list = document.getElementById("pub-list");
-      const sorted = [...PUBS].sort(mode === "cites" ? byCites : byDate);
+      const sorted = [...PUBS].sort(mode === "cites" ? byCites : byDate).slice(0, MAX_SHOWN);
       list.innerHTML = "";
       sorted.forEach((m, i) => {
         const title = m.titles?.[0]?.title || "Untitled";
@@ -192,10 +193,17 @@
           `</div>` +
           (fig ? `<a class="pub-fig${Array.isArray(fig) ? " multi" : ""}" href="https://inspirehep.net/literature/${m.recid}">` +
                  [].concat(fig).map(src =>
-                   `<img src="${src}" alt="Figure from: ${escapeHtml(title)}" loading="lazy" onerror="this.remove()"/>`).join("") +
+                   `<img src="${src}" alt="Figure from: ${escapeHtml(title)}" onerror="this.remove()"/>`).join("") +
                  `</a>` : "");
         list.appendChild(li);
       });
+      if (PUBS.length > MAX_SHOWN) {
+        const more = document.createElement("li");
+        more.className = "pub-more";
+        more.innerHTML = `Showing ${MAX_SHOWN} of ${PUBS.length}. ` +
+          `<a href="https://inspirehep.net/authors/${AUTHOR_RECID}">Full list on INSPIRE-HEP</a>.`;
+        list.appendChild(more);
+      }
     }
 
     document.querySelectorAll(".pub-sort button").forEach(btn => {
